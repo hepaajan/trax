@@ -42,6 +42,7 @@ The possible modes are:
 
 import jax
 import numpy as np
+import tensorflow as tf
 
 from trax import fastmath
 from trax.fastmath import numpy as jnp
@@ -535,8 +536,7 @@ def _zero_pad(x, pad, axis):
   """Helper for jnp.pad with 0s for single-axis case."""
   pad_widths = [(0, 0)] * len(x.shape)
   pad_widths[axis] = pad  # Padding on axis.
-  return jnp.pad(x, pad_widths, mode='constant',
-                 constant_values=x.dtype.type(0))
+  return jnp.pad(x, pad_widths, mode='constant')
 
 
 def _fast_inference_init_state(input_signature, buffer_length):
